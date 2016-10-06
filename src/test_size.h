@@ -73,7 +73,8 @@ namespace Test_Size {
             void *py1 = (void *) &y1;
             std::cout << "y1.instance      addr := " << py1 << std::endl;
             std::cout << "y1.instance vtbl addr := " << py1 << std::endl;
-            std::cout << "y1.instance.name addr := " << (py1 + 8) << std::endl;// void* 指针是以１个字节为单位，所以跳过８个字节
+            // sizeof(void or of a function) as 1，name 在ｐｕｗｂ实例指针后８,所以 (py1 + 8)
+            std::cout << "y1.instance.name addr := " << (py1 + 8) << std::endl;
             std::cout << "dir y1.instance.name addr := " << (void *) (&y1._name) << std::endl;
         }
 
@@ -85,12 +86,12 @@ namespace Test_Size {
         std::cout << " array[0] " << &array[0] << ", array[1] " << &array[1] << std::endl;
         {
             long *ptr0 = &array[0];
-            long *ptr1 = ptr0 + 1; // 这儿指针是指向具体类型, 跳到下一个sizeof(long)指针大小
+            long *ptr1 = ptr0 + 1; //sizeof(long) as 8
             std::cout << " long* ptr0 " << ptr0 << ", ptr1 " << ptr1 << std::endl;
         }
         {
             void *ptr0 = (void *) &array[0];
-            void *ptr1 = ptr0 + 1; // 这儿指针是指向void类型,就是跳  size of a void or of a function as 1，是直接内存加１.
+            void *ptr1 = ptr0 + 1; // sizeof(void or of a function) as 1
             std::cout << " void* ptr0 " << ptr0 << ", ptr1 " << ptr1 << std::endl;
         }
         printSize();
