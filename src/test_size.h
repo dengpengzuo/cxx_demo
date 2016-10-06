@@ -49,21 +49,21 @@ namespace Test_Size {
     };
 
     void printSize() {
-        PrintInfo info[] = {
-                {"sizeof(void)",     sizeof(void)},
-                {"sizeof(int)",      sizeof(int)},
-                {"sizeof(long)",     sizeof(long)},
-                {"sizeof(size_t)",   sizeof(size_t)},
+        struct PrintInfo info[] = {
+                //{"sizeof(void)", sizeof(void)}, // TODO:g++支持有警告, clang不支持, sizeof(void) return 1
+                {"sizeof(int)", sizeof(int)},
+                {"sizeof(long)", sizeof(long)},
+                {"sizeof(size_t)", sizeof(size_t)},
                 {"sizeof(intptr_t)", sizeof(intptr_t)},
 
-                {"sizeof(X)",        sizeof(X)},
-                {"sizeof(Y1)",       sizeof(Y1)},
-                {"sizeof(Y2)",       sizeof(Y2)},
-                {"sizeof(Y3)",       sizeof(Y3)},
-                {"sizeof(Y4)",       sizeof(Y4)},
-                {"sizeof(Y4)",       sizeof(Y4)}
+                {"sizeof(X)", sizeof(X)},
+                {"sizeof(Y1)", sizeof(Y1)},
+                {"sizeof(Y2)", sizeof(Y2)},
+                {"sizeof(Y3)", sizeof(Y3)},
+                {"sizeof(Y4)", sizeof(Y4)}
         };
-        for (size_t i = 0; i < sizeof(info) / sizeof(PrintInfo); ++i) {
+
+        for (size_t i = 0; i < sizeof(info) / sizeof(info[0]); ++i) {
             PrintInfo *p = &info[i];
             std::cout
             << std::left << std::setw(16) << p->name
@@ -81,11 +81,12 @@ namespace Test_Size {
             long *ptr1 = ptr0 + 1; //sizeof(long) as 8
             std::cout << " long* ptr0 " << ptr0 << ", ptr1 " << ptr1 << std::endl;
         }
-        {
+        /*{
             void *ptr0 = (void *) &array[0];
-            void *ptr1 = ptr0 + 1; // sizeof(void or of a function) as 1
+            void *ptr1 = ptr0 + 1; // sizeof(void or of a function) as 1, TODO: clang++ 会报错, arithmetic on a pointer to void
+            void *ptr1 = (void *) &array[1];
             std::cout << " void* ptr0 " << ptr0 << ", ptr1 " << ptr1 << std::endl;
-        }
+        }*/
         printSize();
     }
 };
