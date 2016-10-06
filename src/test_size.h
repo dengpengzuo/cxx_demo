@@ -1,7 +1,9 @@
 #ifndef TEST_SIZE_H
 #define TEST_SIZE_H
 
+#include <iomanip>
 #include <iostream>
+#include <string>
 #include <cstdint>
 
 namespace Test_Size {
@@ -24,7 +26,7 @@ namespace Test_Size {
 
     };
 
-    // 64位下，X无变，自己只有一个name，所以占用1个字节
+    // 64位下，X无内部成员变量，自己只有一个name，所以占用1个字节
     // sizeof(Y3) := 1
     class Y3 : public X {
     public:
@@ -39,51 +41,41 @@ namespace Test_Size {
 
     };
 
+    struct PrintInfo {
+        std::string name;
+        size_t size;
+
+        PrintInfo(const char *v, size_t s) : name(v), size(s) { }
+    };
 
     void printSize() {
-        size_t xs = sizeof(X);
-        size_t y1s = sizeof(Y1);
-        size_t y2s = sizeof(Y2);
-        size_t y3s = sizeof(Y3);
-        size_t y4s = sizeof(Y4);
+        PrintInfo info[] = {
+                {"sizeof(void)",     sizeof(void)},
+                {"sizeof(int)",      sizeof(int)},
+                {"sizeof(long)",     sizeof(long)},
+                {"sizeof(size_t)",   sizeof(size_t)},
+                {"sizeof(intptr_t)", sizeof(intptr_t)},
 
-        std::cout
-        << "\nsizeof(uintptr_t) :=" << sizeof(uintptr_t)
-        << "\nsizeof(intptr_t)  :=" << sizeof(intptr_t)
-        << "\nsizeof(X)  :=" << xs
-        << "\nsizeof(Y1) :=" << y1s
-        << "\nsizeof(Y2) :=" << y2s
-        << "\nsizeof(Y3) :=" << y3s
-        << "\nsizeof(Y4) :=" << y4s
-
-        << std::endl;
-    }
-
-    void printPtr() {
-        Y1 y1('A');
-        Y2 y2;
-        {
-            uintptr_t py1 = (uintptr_t) &y1;
-            std::cout << "y1.instance      addr := " << py1 << std::endl;
-            std::cout << "y1.instance vtbl addr := " << py1 << std::endl;
-            std::cout << "y1.instance.name addr := " << (py1 + 8) << std::endl; // 跳过指针８个字节.
-            std::cout << "dir y1.instance.name addr := " << (uintptr_t) (&y1._name) << std::endl;
+                {"sizeof(X)",        sizeof(X)},
+                {"sizeof(Y1)",       sizeof(Y1)},
+                {"sizeof(Y2)",       sizeof(Y2)},
+                {"sizeof(Y3)",       sizeof(Y3)},
+                {"sizeof(Y4)",       sizeof(Y4)},
+                {"sizeof(Y4)",       sizeof(Y4)}
+        };
+        for (size_t i = 0; i < sizeof(info) / sizeof(PrintInfo); ++i) {
+            PrintInfo *p = &info[i];
+            std::cout
+            << std::left << std::setw(16) << p->name
+            << " := "
+            << std::right << std::setw(2) << p->size
+            << std::endl;
         }
-        {
-            void *py1 = (void *) &y1;
-            std::cout << "y1.instance      addr := " << py1 << std::endl;
-            std::cout << "y1.instance vtbl addr := " << py1 << std::endl;
-            // sizeof(void or of a function) as 1，name 在ｐｕｗｂ实例指针后８,所以 (py1 + 8)
-            std::cout << "y1.instance.name addr := " << (py1 + 8) << std::endl;
-            std::cout << "dir y1.instance.name addr := " << (void *) (&y1._name) << std::endl;
-        }
-
-
     }
 
     void test() {
         long array[] = {0x0102030405060708, 0x0102030405060708};
-        std::cout << " array[0] " << &array[0] << ", array[1] " << &array[1] << std::endl;
+        std::cout << "   array[0] " << &array[0] << ", array[1] " << &array[1] << std::endl;
         {
             long *ptr0 = &array[0];
             long *ptr1 = ptr0 + 1; //sizeof(long) as 8
@@ -95,7 +87,6 @@ namespace Test_Size {
             std::cout << " void* ptr0 " << ptr0 << ", ptr1 " << ptr1 << std::endl;
         }
         printSize();
-        printPtr();
     }
 };
 
