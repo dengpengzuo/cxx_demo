@@ -74,11 +74,11 @@ namespace Test_Size {
     }
 
     void test() {
-        long array[] = {0x0102030405060708, 0x0102030405060708};
+        uint64_t array[] = {0x0102030405060708, 0x0102030405060708};
         std::cout << "   array[0] " << &array[0] << ", array[1] " << &array[1] << std::endl;
         {
-            long *ptr0 = &array[0];
-            long *ptr1 = ptr0 + 1; //sizeof(long) as 8
+            uint64_t *ptr0 = &array[0];
+            uint64_t *ptr1 = ptr0 + 1; //sizeof(long) as 8
             std::cout << " long* ptr0 " << ptr0 << ", ptr1 " << ptr1 << std::endl;
         }
         /*{
