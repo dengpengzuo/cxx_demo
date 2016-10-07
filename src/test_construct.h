@@ -1,6 +1,8 @@
 #ifndef CXX_DEMO_TEST_CONSTRUCT_H
 #define CXX_DEMO_TEST_CONSTRUCT_H
 
+#include <new>
+
 namespace Test_Construct {
     class Abstract_Base {
     public:
@@ -29,9 +31,8 @@ namespace Test_Construct {
     class Point : public Abstract_Base {
     public:
         // TODO: 如果不加[Abstract_Base::Abstract_Base()] 编译器会自动加上 调用父类无参数构造器(base()).
-        Point() : Abstract_Base::Abstract_Base() {
+        Point(int x) : Abstract_Base::Abstract_Base() , _x(x){
             std::cout << " Point::Point " << std::endl;
-            _x = 100;
         }
 
         // TODO:每一个类中最多只能有一个析构函数，因此调用的时候并不会出现二义性，因此析构函数不需要显式的调用
@@ -51,7 +52,7 @@ namespace Test_Construct {
 
     void test() {
         {
-            Abstract_Base *base = new Point();
+            Abstract_Base *base = new Point(1);
             int v = base->interface_aaa();
             (void) v;
             // TODO: 解构函数如不是virtual，这儿就是跳过子类，直接调用父类的解构函数，从而没有调用［子类］解构函数，引起内存泻漏.
@@ -60,8 +61,8 @@ namespace Test_Construct {
         {
             void *m = malloc(sizeof(Point));
 
-            // 直接在内存上构造出某个class实例.
-            Point *p = ::new(m) Point;      //这种就不会再调用Point中申明的 operator new();
+            // 在分配好的内存上初始化对象，并返回指向该对象的指针
+            Point *p = ::new(m) Point(100);      //这种就不会再调用Point中申明的 operator new();
             int v = p->interface_aaa();
             (void) v;
             // 调用这个对象的解构器，放出对象所使用的空间
