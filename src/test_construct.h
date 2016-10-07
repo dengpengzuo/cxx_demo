@@ -12,6 +12,16 @@ namespace Test_Construct {
             std::cout << " Abstract_Base::~Abstract_Base " << std::endl;
         }
 
+        void *operator new(size_t size) {
+            std::cout << "operator new size " << size << std::endl;
+            return ::operator new(size);
+        }
+
+        void operator delete(void *pointee) {
+            std::cout << "operator delete" << std::endl;
+            ::operator delete(pointee);
+        }
+
     public:
         virtual int interface_aaa() = 0;
     };
@@ -40,11 +50,25 @@ namespace Test_Construct {
     };
 
     void test() {
-        Abstract_Base *base = new Point();
-        int v = base->interface_aaa();
-        (void)v;
-        // TODO: 解构函数如不是virtual，这儿就是跳过子类，直接调用父类的解构函数，从而没有调用［子类］解构函数，引起内存泻漏.
-        delete base;
+        {
+            Abstract_Base *base = new Point();
+            int v = base->interface_aaa();
+            (void) v;
+            // TODO: 解构函数如不是virtual，这儿就是跳过子类，直接调用父类的解构函数，从而没有调用［子类］解构函数，引起内存泻漏.
+            delete base;
+        }
+        {
+            void *m = malloc(sizeof(Point));
+
+            // 直接在内存上构造出某个class实例.
+            Point *p = ::new(m) Point;      //这种就不会再调用Point中申明的 operator new();
+            int v = p->interface_aaa();
+            (void) v;
+            // 调用这个对象的解构器，放出对象所使用的空间
+            p->~Point();
+
+            free(m);
+        }
     }
 };
 
