@@ -51,6 +51,17 @@ namespace Test_Construct {
     };
 
     void test() {
+        // 1 new operator，也叫new表达式；new表达式比较常见，也最常用，例如：
+        // string* ps = new string("abc");
+        // 上面这个new表达式完成了两件事情：申请内存和初始化对象。
+
+        // 2. operator new，也叫new操作符。这两个英文名称起的也太绝了，很容易搞混，那就记中文名称吧。new操作符类似于C语 言中的malloc，只是负责申请内存，例如：
+        // void* buffer = ::operator new(sizeof(string));
+
+        // 3. placement new，它用于在给定的内存中初始化对象，也就是说你手中已有一块闲置的内存，例如：
+        // void* buffer = ::operator new(sizeof(string));//那么现在buffer是你所拥有闲置内存的指针
+        //       buffer = :: new(buffer) string("abc");        //调用了placement new，在buffer所指向的内存中初始化string类型的对象，初始值是"abc"
+        // ::operator delete(buffer);
         {
             Abstract_Base *base = new Point(1);
             int v = base->interface_aaa();
@@ -59,8 +70,7 @@ namespace Test_Construct {
             delete base;
         }
         {
-            void *m = malloc(sizeof(Point));
-
+            void *m = ::operator new (sizeof(Point));
             // 在分配好的内存上初始化对象，并返回指向该对象的指针
             Point *p = ::new(m) Point(100);      //这种就不会再调用Point中申明的 operator new();
             int v = p->interface_aaa();
@@ -68,7 +78,7 @@ namespace Test_Construct {
             // 调用这个对象的解构器，放出对象所使用的空间
             p->~Point();
 
-            free(m);
+            ::operator delete(m);
         }
     }
 };
