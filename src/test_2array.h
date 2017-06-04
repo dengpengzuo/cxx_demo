@@ -12,7 +12,6 @@ typedef int (*array4_ptr)[4];  // 指向2维数组的镄针
 
 static void print_2array_impl(array4_ptr p, int n) {
   std::ostringstream buf;
-  int fmt_int = 0;
   // 右对角线
   for (int c = n - 1; c >= 0; --c) {
     int e = c;
