@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdint>
+#include <stdio.h>
 
 namespace Test_Member_Addr {
 
