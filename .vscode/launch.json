@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Launch",
+            "name": "win (gdb)",
             "type": "cppdbg",
             "request": "launch",
-            "miDebuggerPath": "/usr/bin/gdb",
+            "miDebuggerPath": "d:/dev64/mingw64/bin/gdb.exe",
             "program": "${workspaceRoot}/build/bin/cxx_demo",
             "args": [],
             "stopAtEntry": false,
