@@ -6,21 +6,21 @@
 #include "test_size.h"
 
 int main(int argc, char **argv) {
-  Test_MFP::test();
-  std::cout << std::string(50, '-') << std::endl;
+    Test_MFP::test();
+    std::cout << std::string(50, '-') << std::endl;
 
-  Test_TFO::test();
-  std::cout << std::string(50, '-') << std::endl;
+    Test_TFO::test();
+    std::cout << std::string(50, '-') << std::endl;
 
-  Test_Size::test();
-  std::cout << std::string(50, '-') << std::endl;
+    Test_Size::test();
+    std::cout << std::string(50, '-') << std::endl;
 
-  Test_Member_Addr::test();
-  std::cout << std::string(50, '-') << std::endl;
+    Test_Member_Addr::test();
+    std::cout << std::string(50, '-') << std::endl;
 
-  Test_Construct::test();
-  std::cout << std::string(50, '-') << std::endl;
+    Test_Construct::test();
+    std::cout << std::string(50, '-') << std::endl;
 
-  Test_2Array::print_2array();
-  return 0;
+    Test_2Array::print_2array();
+    return 0;
 }
