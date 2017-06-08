@@ -10,8 +10,37 @@ namespace Test_2Array {
                   {5,  6,  7,  8},
                   {9,  10, 11, 12},
                   {13, 14, 15, 16}};
+    int array_wx[] = {1, 2, 3, 2, 2};
 
     typedef int (*array4_ptr)[4];  // 指向2维数组的镄针
+
+    // 微信次数
+    static void print_2array_wx(){
+        int len = sizeof(array_wx) / sizeof(array_wx[0]);
+        int num = 0;
+        int count = 0;
+
+        for (int i = 0; i < len; ++i)
+        {
+            if (count == 0)
+            {
+                num = array_wx[i];
+                count = 1;
+            }
+            else
+            {
+                if (num == array_wx[i])
+                    ++count;
+                else
+                    --count;
+            }
+        }
+        if (count > 0)
+        {
+            count = (len - count) / 2 + count;
+            fprintf(stdout, "发现出现次数过半数字：%d, 出现次数：%d\n", num, count);
+        }
+    }
 
     static void print_2array_impl(array4_ptr p, int n) {
         std::ostringstream buf;
@@ -41,6 +70,9 @@ namespace Test_2Array {
         std::cout << buf.str() << std::endl;
     }
 
-    void print_2array() { print_2array_impl(&v[0], 4); }
+    void print_2array() { 
+        print_2array_impl(&v[0], 4); 
+        print_2array_wx();
+    }
 };
 #endif  // TEST_2ARRAY_H

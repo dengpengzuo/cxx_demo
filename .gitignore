@@ -14,3 +14,5 @@
 
 # CMakeFile build Dir 
 build
+cmake-build-debug
+.idea

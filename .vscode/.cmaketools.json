@@ -6,5 +6,47 @@
     },
     "description": "Emit debug information without performing optimizations"
   },
-  "activeEnvironments": []
+  "activeEnvironments": [],
+  "codeModel": {
+    "configurations": [
+      {
+        "name": "Debug",
+        "projects": [
+          {
+            "buildDirectory": "/work/c-lib/cxx_demo/build",
+            "name": "cxx_demo",
+            "sourceDirectory": "/work/c-lib/cxx_demo",
+            "targets": [
+              {
+                "artifacts": [
+                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
+                ],
+                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": " -Wall -std=c++11 -g  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/main.cc"
+                    ]
+                  }
+                ],
+                "fullName": "cxx_demo",
+                "linkLanguageFlags": "-Wall -std=c++11 -g",
+                "linkLibraries": "-rdynamic",
+                "linkerLanguage": "CXX",
+                "name": "cxx_demo",
+                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "type": "EXECUTABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cookie": "0.6654826537724035",
+    "inReplyTo": "codemodel",
+    "type": "reply"
+  }
 }
