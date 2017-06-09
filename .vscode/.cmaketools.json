@@ -6,5 +6,49 @@
     },
     "description": "Emit debug information without performing optimizations"
   },
-  "activeEnvironments": []
+  "activeEnvironments": [],
+  "codeModel": {
+    "configurations": [
+      {
+        "name": "Debug",
+        "projects": [
+          {
+            "buildDirectory": "D:/dev-lib/c-lib/cxx_demo/build",
+            "name": "cxx_demo",
+            "sourceDirectory": "D:/dev-lib/c-lib/cxx_demo",
+            "targets": [
+              {
+                "artifacts": [
+                  "D:/dev-lib/c-lib/cxx_demo/build/bin/cxx_demo.exe",
+                  "D:/dev-lib/c-lib/cxx_demo/build/bin/libcxx_demo.dll.a",
+                  "D:/dev-lib/c-lib/cxx_demo/build/bin/cxx_demo.pdb"
+                ],
+                "buildDirectory": "D:/dev-lib/c-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": " -Wall -std=c++11 -g  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/main.cc"
+                    ]
+                  }
+                ],
+                "fullName": "cxx_demo.exe",
+                "linkLanguageFlags": "-Wall -std=c++11 -g",
+                "linkLibraries": "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+                "linkerLanguage": "CXX",
+                "name": "cxx_demo",
+                "sourceDirectory": "D:/dev-lib/c-lib/cxx_demo",
+                "type": "EXECUTABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cookie": "0.438313708313808",
+    "inReplyTo": "codemodel",
+    "type": "reply"
+  }
 }

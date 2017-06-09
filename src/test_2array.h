@@ -13,6 +13,30 @@ namespace Test_2Array {
 
     typedef int (*array4_ptr)[4];  // 指向2维数组的镄针
 
+    static int print_2array_v(int *array, int len)
+    {
+		int find_num = 0;
+		int find_count = 0;
+		for (int i = 0; i < len; ++i) {
+			if (find_count == 0) {
+				find_num = array[i];
+				find_count = 1;
+			} else {
+				if (array[i] == find_num) {
+					find_count++;
+				} else {
+					find_count--;
+				}
+			}
+		}
+		if (find_count > 0) {
+            return find_num;
+			// ("  num := " + find_num);
+			// ("count := " + ((array.length - find_count) / 2 + find_count));
+		}
+        return 0;
+    }
+
     static void print_2array_impl(array4_ptr p, int n) {
         std::ostringstream buf;
         // 右对角线
