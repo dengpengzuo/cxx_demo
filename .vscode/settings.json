@@ -23,6 +23,10 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "sstream": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "ctime": "cpp",
+        "iomanip": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp"
     }
 }
