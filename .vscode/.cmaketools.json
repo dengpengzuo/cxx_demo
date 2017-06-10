@@ -13,19 +13,6 @@
         "name": "Debug",
         "projects": [
           {
-<<<<<<< HEAD
-            "buildDirectory": "D:/dev-lib/c-lib/cxx_demo/build",
-            "name": "cxx_demo",
-            "sourceDirectory": "D:/dev-lib/c-lib/cxx_demo",
-            "targets": [
-              {
-                "artifacts": [
-                  "D:/dev-lib/c-lib/cxx_demo/build/bin/cxx_demo.exe",
-                  "D:/dev-lib/c-lib/cxx_demo/build/bin/libcxx_demo.dll.a",
-                  "D:/dev-lib/c-lib/cxx_demo/build/bin/cxx_demo.pdb"
-                ],
-                "buildDirectory": "D:/dev-lib/c-lib/cxx_demo/build",
-=======
             "buildDirectory": "/work/c-lib/cxx_demo/build",
             "name": "cxx_demo",
             "sourceDirectory": "/work/c-lib/cxx_demo",
@@ -35,7 +22,6 @@
                   "/work/c-lib/cxx_demo/build/bin/cxx_demo"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
->>>>>>> fdc378ca304578dbbdb990c58a53c3f4268b3e54
                 "fileGroups": [
                   {
                     "compileFlags": " -Wall -std=c++11 -g  ",
@@ -46,21 +32,12 @@
                     ]
                   }
                 ],
-<<<<<<< HEAD
-                "fullName": "cxx_demo.exe",
-                "linkLanguageFlags": "-Wall -std=c++11 -g",
-                "linkLibraries": "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-                "linkerLanguage": "CXX",
-                "name": "cxx_demo",
-                "sourceDirectory": "D:/dev-lib/c-lib/cxx_demo",
-=======
                 "fullName": "cxx_demo",
                 "linkLanguageFlags": "-Wall -std=c++11 -g",
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
                 "name": "cxx_demo",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
->>>>>>> fdc378ca304578dbbdb990c58a53c3f4268b3e54
                 "type": "EXECUTABLE"
               }
             ]
@@ -68,11 +45,7 @@
         ]
       }
     ],
-<<<<<<< HEAD
-    "cookie": "0.438313708313808",
-=======
-    "cookie": "0.8070081652795746",
->>>>>>> fdc378ca304578dbbdb990c58a53c3f4268b3e54
+    "cookie": "0.4991740522608845",
     "inReplyTo": "codemodel",
     "type": "reply"
   }

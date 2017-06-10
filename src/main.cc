@@ -23,5 +23,7 @@ int main(int argc, char **argv) {
   std::cout << std::string(50, '-') << std::endl;
 
   Test_2Array::print_2array();
+
+  TestFd::test_cls_fd();
   return 0;
 }
