@@ -4,6 +4,7 @@
 #include "test_construct.h"
 #include "test_member_addr.h"
 #include "test_size.h"
+#include "test_point.h"
 
 int main(int argc, char **argv) {
   Test_MFP::test();
