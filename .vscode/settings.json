@@ -27,6 +27,11 @@
         "ctime": "cpp",
         "iomanip": "cpp",
         "tuple": "cpp",
+<<<<<<< HEAD
         "utility": "cpp"
+=======
+        "utility": "cpp",
+        "*.ipp": "cpp"
+>>>>>>> fdc378ca304578dbbdb990c58a53c3f4268b3e54
     }
 }
