@@ -1,5 +1,5 @@
 {
-    "files.associations": {
+"files.associations": {
         "*.make": "makefile",
         "iostream": "cpp",
         "*.tcc": "cpp",
@@ -27,11 +27,20 @@
         "ctime": "cpp",
         "iomanip": "cpp",
         "tuple": "cpp",
-<<<<<<< HEAD
-        "utility": "cpp"
-=======
         "utility": "cpp",
-        "*.ipp": "cpp"
->>>>>>> fdc378ca304578dbbdb990c58a53c3f4268b3e54
-    }
+        "*.ipp": "cpp",
+        "functional": "cpp",
+        "chrono": "cpp",
+        "cmath": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstring": "cpp",
+        "atomic": "cpp",
+        "condition_variable": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "ratio": "cpp",
+        "thread": "cpp"
+}
 }

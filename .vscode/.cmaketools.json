@@ -19,12 +19,35 @@
             "targets": [
               {
                 "artifacts": [
+                  "/work/c-lib/cxx_demo/build/bin/context"
+                ],
+                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": " -lboost_context -g  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/context.cc"
+                    ]
+                  }
+                ],
+                "fullName": "context",
+                "linkLanguageFlags": "-lboost_context -g",
+                "linkLibraries": "-rdynamic",
+                "linkerLanguage": "CXX",
+                "name": "context",
+                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
                   "/work/c-lib/cxx_demo/build/bin/cxx_demo"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
                   {
-                    "compileFlags": " -Wall -std=c++11 -g  ",
+                    "compileFlags": " -lboost_context -g  ",
                     "isGenerated": false,
                     "language": "CXX",
                     "sources": [
@@ -33,7 +56,7 @@
                   }
                 ],
                 "fullName": "cxx_demo",
-                "linkLanguageFlags": "-Wall -std=c++11 -g",
+                "linkLanguageFlags": "-lboost_context -g",
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
                 "name": "cxx_demo",
@@ -45,7 +68,7 @@
         ]
       }
     ],
-    "cookie": "0.4991740522608845",
+    "cookie": "0.36558644588047096",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
