@@ -6,11 +6,12 @@
 #include <sstream>
 
 namespace Test_2Array {
-int array_wx[] = { 1, 2, 3, 3, 3, 4, 2 };
+
 // 微信面试找出次数
 static void
 print_2array_wx()
 {
+    int array_wx[] = { 1, 2, 3, 3, 3, 4, 2 };
     int len = sizeof(array_wx) / sizeof(array_wx[0]);
     int num = 0;
     int count = 0;
@@ -33,15 +34,18 @@ print_2array_wx()
 }
 
 //------------------------------------------------------------------------------
-int v[][4] = { { 1, 2, 3, 4 },
-    { 5, 6, 7, 8 },
-    { 9, 10, 11, 12 },
-    { 13, 14, 15, 16 } };
+
 typedef int (*array4_ptr)[4]; // 指向2维数组的镄针
 // 双打对角线方式打印
 static void
 print_2array_impl()
 {
+    int v[][4] = {
+        { 1, 2, 3, 4 },
+        { 5, 6, 7, 8 },
+        { 9, 10, 11, 12 },
+        { 13, 14, 15, 16 }
+    };
     array4_ptr p = &v[0];
     int n = 4;
     std::ostringstream buf;
@@ -69,7 +73,6 @@ print_2array_impl()
 }
 
 //------------------------------------------------------------------------------
-int array_int[128];
 // 二发查找
 static void
 find_array_result(int* array, int len, int v, int except)
@@ -132,6 +135,7 @@ random(double start, double end)
 static void
 print_2find_array()
 {
+    int array_int[128];
     int len = sizeof(array_int) / sizeof(array_int[0]);
     ::srand(time(0));
     for (int i = 0; i < len; ++i) {

@@ -47,34 +47,6 @@
               },
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_context"
-                ],
-                "buildDirectory": "/work/c-lib/cxx_demo/build",
-                "fileGroups": [
-                  {
-                    "compileFlags": " -lboost_context -g  ",
-                    "includePath": [
-                      {
-                        "path": "/work/c-lib/cxx_demo/src"
-                      }
-                    ],
-                    "isGenerated": false,
-                    "language": "CXX",
-                    "sources": [
-                      "src/boost/context.cc"
-                    ]
-                  }
-                ],
-                "fullName": "cxx_context",
-                "linkLanguageFlags": "-lboost_context -g",
-                "linkLibraries": "-rdynamic",
-                "linkerLanguage": "CXX",
-                "name": "cxx_context",
-                "sourceDirectory": "/work/c-lib/cxx_demo",
-                "type": "EXECUTABLE"
-              },
-              {
-                "artifacts": [
                   "/work/c-lib/cxx_demo/build/bin/cxx_sort"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
@@ -100,13 +72,41 @@
                 "name": "cxx_sort",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "/work/c-lib/cxx_demo/build/bin/cxx_context"
+                ],
+                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": " -lboost_context -g  ",
+                    "includePath": [
+                      {
+                        "path": "/work/c-lib/cxx_demo/src"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/boost/context.cc"
+                    ]
+                  }
+                ],
+                "fullName": "cxx_context",
+                "linkLanguageFlags": "-lboost_context -g",
+                "linkLibraries": "-rdynamic",
+                "linkerLanguage": "CXX",
+                "name": "cxx_context",
+                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "type": "EXECUTABLE"
               }
             ]
           }
         ]
       }
     ],
-    "cookie": "0.8453521324942261",
+    "cookie": "0.8237843006083818",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
