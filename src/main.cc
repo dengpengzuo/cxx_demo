@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
 
   Test_2Array::print_2array();
 
+  std::cout << std::string(50, '-') << std::endl;
   TestFd::test_cls_fd();
   TestFd::test_coroute();
   return 0;
