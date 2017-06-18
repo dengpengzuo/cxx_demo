@@ -19,16 +19,49 @@
             "targets": [
               {
                 "artifacts": [
+                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
+                ],
+                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": " -lboost_context -g  ",
+                    "includePath": [
+                      {
+                        "path": "/work/c-lib/cxx_demo/src"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/cxx11/main.cc"
+                    ]
+                  }
+                ],
+                "fullName": "cxx_demo",
+                "linkLanguageFlags": "-lboost_context -g",
+                "linkLibraries": "-rdynamic",
+                "linkerLanguage": "CXX",
+                "name": "cxx_demo",
+                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
                   "/work/c-lib/cxx_demo/build/bin/context"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
                   {
                     "compileFlags": " -lboost_context -g  ",
+                    "includePath": [
+                      {
+                        "path": "/work/c-lib/cxx_demo/src"
+                      }
+                    ],
                     "isGenerated": false,
                     "language": "CXX",
                     "sources": [
-                      "src/context.cc"
+                      "src/boost/context.cc"
                     ]
                   }
                 ],
@@ -42,24 +75,29 @@
               },
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
+                  "/work/c-lib/cxx_demo/build/bin/cxx_sort"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
                   {
                     "compileFlags": " -lboost_context -g  ",
+                    "includePath": [
+                      {
+                        "path": "/work/c-lib/cxx_demo/src"
+                      }
+                    ],
                     "isGenerated": false,
                     "language": "CXX",
                     "sources": [
-                      "src/main.cc"
+                      "src/sort/test_sort.cc"
                     ]
                   }
                 ],
-                "fullName": "cxx_demo",
+                "fullName": "cxx_sort",
                 "linkLanguageFlags": "-lboost_context -g",
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
-                "name": "cxx_demo",
+                "name": "cxx_sort",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
               }
@@ -68,7 +106,7 @@
         ]
       }
     ],
-    "cookie": "0.36558644588047096",
+    "cookie": "0.25818680458782106",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
