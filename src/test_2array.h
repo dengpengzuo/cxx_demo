@@ -9,7 +9,7 @@ namespace Test_2Array {
 int v[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
 int array_wx[] = {1, 2, 3, 2, 2};
 
-int array_int[500] = {0};
+int array_int[10] = {0};
 
 typedef int (*array4_ptr)[4];  // 指向2维数组的镄针
 
@@ -61,33 +61,69 @@ static void print_2array_impl(array4_ptr p, int n) {
   std::cout << buf.str() << std::endl;
 }
 
-static void find_array_result(int *array, int len, int v) {
+static void find_array_result(int *array, int len, int v, int except) {
   int low = 0;
   int high = len - 1;
+  int mid = 0;
   std::ostringstream buf;
-  while (low <= high) { // 因为 high = len-1 所以这儿要 <=
-    buf << "find [" << low << "," << high << "),";
-    
-    int mid = (low + high) >> 1 ; // low + (high - low) / 2
-
-    if (array[mid] == v) {
-      buf << "find result:" << v << " at " << mid << ".\n";
-      break;
-    } else if (array[mid] > v) {
-      high = mid;  // 这儿必须是 mid , 因为 high = len - 1;
-    } else {      // array[mid] < v
+  while (low <= high) {
+    mid = (high + low) >> 1;
+    if (array[mid] > v) {
+      high = mid - 1;
+    } else if (array[mid] < v) {
       low = mid + 1;
+    } else {
+      std::cout << "find val:" << v << " at:" << mid ;
+      if (mid != except) {
+        std::cout << " but except at:" << except ;
+      }
+      std::cout << std::endl;
+      break;
     }
   }
-  std::cout << buf.str();
+}
+
+#define PRINT_ARRAY(AR,LEN) \
+  {std::ostringstream buf;\
+  for(int __i = 0; __i< LEN; ++__i) { \
+    buf << "\n[" << __i << "]=" << AR[__i]; \
+  } \
+  std::cout << buf.str() << std::endl;  \
+  }
+
+// 插入排序
+static void insert_sort_array(int *a, int len) {
+  int right = len - 1; // right 必须是len-1
+  for (int i = 0, j = i; i < right; j = ++i) {
+    int ai = a[i + 1]; // 直接取下一个数组值.
+
+    while (ai < a[j]) {
+      a[j + 1] = a[j]; // a[j]后移到a[j+1]
+      --j ;
+      if (j < 0) {     // **注意这儿不对必须是到-1.
+        break;
+      }
+    }
+    if(i != j)
+      a[j + 1] = ai; 
+  }
+}
+
+static double random(double start, double end)
+{
+    return start+(end-start)*::rand()/(RAND_MAX + 1.0);
 }
 
 // 二分查找法
 static void print_2find_array() {
+  ::srand(time(0));
   int len = sizeof(array_int) / sizeof(array_int[0]);
-  for (int i = 0; i < len ; ++i) array_int[i] = i;
+  for (int i = 0; i < len ; ++i) array_int[i] = int(random(0, 10000)); 
+  
+  insert_sort_array(&array_int[0], len); // 小数组使用插入排序.
+
   for (int i = 0; i < len; ++i) {
-    find_array_result(&array_int[0], len, i);
+    find_array_result(&array_int[0], len, array_int[i], i);
   }
 }
 
