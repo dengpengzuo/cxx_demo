@@ -47,7 +47,7 @@
               },
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/context"
+                  "/work/c-lib/cxx_demo/build/bin/cxx_context"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
@@ -65,11 +65,11 @@
                     ]
                   }
                 ],
-                "fullName": "context",
+                "fullName": "cxx_context",
                 "linkLanguageFlags": "-lboost_context -g",
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
-                "name": "context",
+                "name": "cxx_context",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
               },
@@ -106,7 +106,7 @@
         ]
       }
     ],
-    "cookie": "0.25818680458782106",
+    "cookie": "0.8453521324942261",
     "inReplyTo": "codemodel",
     "type": "reply"
   }

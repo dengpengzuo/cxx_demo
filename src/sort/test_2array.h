@@ -119,8 +119,7 @@ insert_sort_array(int* a, int len)
                 break;
             }
         }
-        if (i != j)
-            a[j + 1] = ai;
+        a[j + 1] = ai;
     }
 }
 
@@ -139,7 +138,9 @@ print_2find_array()
         array_int[i] = int(random(0, 10000));
     }
 
+    PRINT_ARRAY(array_int, len)
     insert_sort_array(&array_int[0], len); // 小数组使用插入排序.
+    PRINT_ARRAY(array_int, len)
 
     for (int i = 0; i < len; ++i) {
         find_array_result(&array_int[0], len, array_int[i], i);

@@ -15,4 +15,4 @@ add_executable(cxx_sort src/sort/test_sort.cc)
 
 # 加入测试boost_context协程上下文底程
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lboost_context")
-add_executable(context src/boost/context.cc)
+add_executable(cxx_context src/boost/context.cc)
