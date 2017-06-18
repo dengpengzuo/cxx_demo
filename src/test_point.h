@@ -6,9 +6,6 @@
 namespace TestFd {
 static const int row_size = 1024;
 static const int col_size = 1024;
-struct cFdMap {
-  void **array[row_size];
-};
 
 class clsFdMap {
  public:

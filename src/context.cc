@@ -78,7 +78,7 @@ void input_task(boost::context::detail::transfer_t p) {
 
 int main() {
   int share = -1;
-  
+
   average_args aa = {&share};
   input_args ia = {&aa, &share};
 

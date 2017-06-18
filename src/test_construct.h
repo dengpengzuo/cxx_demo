@@ -23,7 +23,6 @@ public:
     std::cout << "operator delete" << std::endl;
     ::operator delete(pointee);
   }
-
 public:
   virtual int interface_aaa() = 0;
 };
