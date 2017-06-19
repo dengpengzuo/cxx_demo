@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <time.h>
 
 namespace Test_2Array {
 
@@ -137,7 +138,7 @@ print_2find_array()
 {
     int array_int[128];
     int len = sizeof(array_int) / sizeof(array_int[0]);
-    ::srand(time(0));
+    ::srand(::time(0));
     for (int i = 0; i < len; ++i) {
         array_int[i] = int(random(0, 10000));
     }

@@ -1,3 +1,8 @@
+
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+
 #include <boost/context/all.hpp>
 
 boost::context::detail::fcontext_t fc_avg, fc_input;
