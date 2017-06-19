@@ -1,112 +1,98 @@
 
+
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
 
 #include <boost/context/all.hpp>
 
-boost::context::detail::fcontext_t fc_avg, fc_input;
+typedef std::function<void(void*)> uthread_function;
 
-bool b_quit = false;
-
-// --- The Average Task ---
-// Computes the average of the input data and
-// then yields execution back to the main task
-//-------------------------
-// struct average_args - data for the task
-// average_yield() - wrapper for yielding execution back to the main task
-// average_task() - the task logic
-// ------------------------
-struct average_args {
-  int* source;
-  int sum;
-  int count;
-  int average;
-  int task_;
-};
-
-void average_yield(boost::context::detail::transfer_t d) {
-  boost::context::detail::jump_fcontext(d.fctx, nullptr);
-}
-
-void average_task(boost::context::detail::transfer_t p) {
-  average_args* args = (average_args*)p.data;
-  args->sum = 0;
-  args->count = 0;
-  args->average = 0;
-  while (true) {
-    args->sum += *args->source;
-    ++args->count;
-    args->average = args->sum / args->count;
-    average_yield(p);
+class boost_uthread {
+ public:
+  ~boost_uthread() {}
+  boost_uthread()
+      : size_(boost::context::stack_traits::default_size()) {
+    this->stack_ = std::malloc(this->size_);
+    this->fctx_ = boost::context::detail::make_fcontext(this->stack_, this->size_, &uthreadFunction);
   }
 
-  printf("ERROR: should not reach the end of average function\n");
-}
+  void run(uthread_function callback, void* args) {
+    this->callback_ = (callback);
+    this->args_ = (args);
+    fprintf(stdout,"run fcontext:%p begin.\n", this->fctx_);
+    boost::context::detail::transfer_t t = boost::context::detail::jump_fcontext(this->fctx_, reinterpret_cast<void*>(this));
+    this->fctx_ = t.fctx;
+    fprintf(stdout,"run change fcontext:%p end.\n", this->fctx_);
+  }
 
-// --- The Input Task ---
-// Reads a number as input from the console and
-// then yields execution back to the main task
-// ----------------------
-// struct input_args - data for the task
-// input_yield() - wrapper for yielding execution back to the main task
-// input_task() - the task logic
-// ----------------------
-struct input_args {
-  average_args* aa;
-  int* target;
-  int task_;
+  void resume() { 
+    fprintf(stdout,"resume jump fcontext:%p \n", this->fctx_);
+    boost::context::detail::transfer_t t = boost::context::detail::jump_fcontext(this->fctx_, nullptr); 
+    fprintf(stdout,"resume return:\n", this->fctx_);
+  }
+
+  void yield() {
+    fprintf(stdout, "yield jump fcontext:%p \n", this->from_fctx_);
+    boost::context::detail::jump_fcontext(this->from_fctx_, nullptr);
+  }
+
+ private:
+  static void uthreadFunction(boost::context::detail::transfer_t t) {
+    boost_uthread* ptr = reinterpret_cast<boost_uthread*>(t.data);
+    ptr->from_fctx_ = t.fctx;
+    fprintf(stdout, "uthreadFunction run fromfctx: %p \n", t.fctx);
+    ptr->callback_(ptr->args_);
+  }
+
+  boost::context::detail::fcontext_t fctx_;
+  boost::context::detail::fcontext_t from_fctx_;
+
+  uthread_function callback_;
+  void* args_;
+  void* stack_;
+  std::size_t size_;
 };
-void input_yield(boost::context::detail::transfer_t t) {
-  boost::context::detail::jump_fcontext(t.fctx, nullptr);
-}
-void input_task(boost::context::detail::transfer_t p) {
-  input_args* pia = (input_args*)p.data;
+
+
+struct input_args {
+  int target;
+  int count_;
+};
+
+void input_task(void* p) ;
+
+bool b_quit = false;
+input_args ia = {0,0};
+boost_uthread c1;
+
+extern void input_task(void* p) {
+  input_args* pia = (input_args*)p;
 
   while (true) {
     printf("number: ");
-    int r = scanf("%d", pia->target);
+    int r = scanf("%d", &(pia->target));
     if (!r) {
       b_quit = true;
       // return;
     }
-    if (*(pia->target) == 0) {
+    if (pia->target == 0) {
       b_quit = true;
       // return;
     }
-
-    input_yield(p);  // tranfer_t 中是从那个fcontext_t来的.
+    pia->count_ = pia->count_ + 1;
+    c1.yield();
   }
 
   printf("ERROR: should not reach the end of input function\n");
 }
 
 int main() {
-  int share = -1;
-
-  average_args aa = {&share};
-  input_args ia = {&aa, &share};
-
-  std::size_t size(boost::context::stack_traits::default_size());
-  void* fc_avg_base(std::malloc(size));
-  void* fc_input_base(std::malloc(size));
-
-  // construct the input task
-  fc_input =
-      boost::context::detail::make_fcontext(fc_input_base, size, input_task);
-
-  // construct the average task
-  fc_avg =
-      boost::context::detail::make_fcontext(fc_avg_base, size, average_task);
-  //
-  boost::context::detail::transfer_t it{fc_input, nullptr}, at{fc_avg, nullptr};
-  // 第一次传fc_input，第二次把第一次传入的值写入，作为第二次重入的基础值.
-  it = boost::context::detail::jump_fcontext(it.fctx, (void*)&ia);
-  at = boost::context::detail::jump_fcontext(at.fctx, (void*)&aa);
+  c1.run(&input_task, (void*)&ia);
   while (!b_quit) {
-    printf("sum=%d count=%d average=%d\n", aa.sum, aa.count, aa.average);
-    it = boost::context::detail::jump_fcontext(it.fctx, nullptr);
-    at = boost::context::detail::jump_fcontext(at.fctx, nullptr);
+    // 第一次传fc_input，第二次把第一次传入的值写入，作为第二次重入的基础值.
+    printf("target=%d count=%d \n", ia.target, ia.count_);
+    c1.resume();
   }
 
   printf("main: done\n");
