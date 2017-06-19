@@ -1,7 +1,7 @@
 
-#include <iostream>
-#include <cstdlib>
 #include <cstdio>
+#include <cstdlib>
+#include <iostream>
 
 #include <boost/context/all.hpp>
 
@@ -100,11 +100,13 @@ int main() {
       boost::context::detail::make_fcontext(fc_avg_base, size, average_task);
   //
   boost::context::detail::transfer_t it{fc_input, nullptr}, at{fc_avg, nullptr};
+  // 第一次传fc_input，第二次把第一次传入的值写入，作为第二次重入的基础值.
+  it = boost::context::detail::jump_fcontext(it.fctx, (void*)&ia);
+  at = boost::context::detail::jump_fcontext(at.fctx, (void*)&aa);
   while (!b_quit) {
-    // 第一次传fc_input，第二次把第一次传入的值写入，作为第二次重入的基础值.
-    it = boost::context::detail::jump_fcontext(it.fctx, (void*)&ia);
-    at = boost::context::detail::jump_fcontext(at.fctx, (void*)&aa);
     printf("sum=%d count=%d average=%d\n", aa.sum, aa.count, aa.average);
+    it = boost::context::detail::jump_fcontext(it.fctx, nullptr);
+    at = boost::context::detail::jump_fcontext(at.fctx, nullptr);
   }
 
   printf("main: done\n");
