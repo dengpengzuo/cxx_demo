@@ -8,6 +8,9 @@
 
 #include <boost/context/all.hpp>
 
+namespace ctx = boost::context ;
+namespace ctxd = boost::context::detail ;
+
 template <typename Alloc>
 class boost_uthread {
 public:
@@ -29,15 +32,15 @@ public:
         this->callback_ = (callback);
         this->args_ = (args);
         // 得到协程ID，同uthreadFunction中代码，取回协程执行权.
-        boost::context::detail::fcontext_t fctx = boost::context::detail::make_fcontext(this->stack_.sp, this->stack_.size, &uthreadEntry<Alloc>);
-        boost::context::detail::transfer_t t = boost::context::detail::jump_fcontext(fctx, reinterpret_cast<void*>(this));
+        ctxd::fcontext_t fctx = ctxd::make_fcontext(this->stack_.sp, this->stack_.size, &uthreadEntry<Alloc>);
+        ctxd::transfer_t t = ctxd::jump_fcontext(fctx, reinterpret_cast<void*>(this));
         this->fctx_ = t.fctx;
     }
 
     void resume()
     {
         // 将执行权给协程.
-        boost::context::detail::transfer_t t = boost::context::detail::jump_fcontext(this->fctx_, nullptr);
+        ctxd::transfer_t t = ctxd::jump_fcontext(this->fctx_, nullptr);
         // fprintf(stdout, "resume jump fcontext:%p return: %p\n", this->fctx_, t.fctx);
         this->fctx_ = t.fctx;
     }
@@ -45,33 +48,33 @@ public:
     void yield()
     {
         // 协程让出执行权
-        boost::context::detail::transfer_t t = boost::context::detail::jump_fcontext(this->from_fctx_, nullptr);
+        ctxd::transfer_t t = ctxd::jump_fcontext(this->from_fctx_, nullptr);
         // fprintf(stdout, "yield jump fcontext:%p return: %p\n", this->from_fctx_, t.fctx);
         this->from_fctx_ = t.fctx;
     }
 
 private:
     template <typename A>
-    static void uthreadEntry(boost::context::detail::transfer_t t)
+    static void uthreadEntry(ctxd::transfer_t t)
     {
         boost_uthread<A>* ptr = static_cast<boost_uthread<A>*>(t.data);
         // return run(),放出协程执行权.
-        boost::context::detail::transfer_t t_ = boost::context::detail::jump_fcontext(t.fctx, nullptr);
+        ctxd::transfer_t t_ = ctxd::jump_fcontext(t.fctx, nullptr);
         ptr->from_fctx_ = t_.fctx;
         ptr->callback_(ptr, ptr->args_);
     }
 
-    boost::context::detail::fcontext_t fctx_;
-    boost::context::detail::fcontext_t from_fctx_;
+    ctxd::fcontext_t fctx_;
+    ctxd::fcontext_t from_fctx_;
 
     uthread_functionx callback_;
     void* args_;
 
     Alloc alloc_;
-    boost::context::stack_context stack_;
+    ctx::stack_context stack_;
 };
 
-typedef boost_uthread<boost::context::protected_fixedsize_stack> pfx_ucthread;
+typedef boost_uthread<ctx::protected_fixedsize_stack> pfx_ucthread;
 
 struct input_v {
     int target;
