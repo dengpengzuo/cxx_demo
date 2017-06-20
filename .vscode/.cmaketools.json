@@ -24,7 +24,7 @@
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
                   {
-                    "compileFlags": " -lboost_context -g  ",
+                    "compileFlags": "-g  ",
                     "includePath": [
                       {
                         "path": "/work/c-lib/cxx_demo/src"
@@ -38,38 +38,10 @@
                   }
                 ],
                 "fullName": "cxx_demo",
-                "linkLanguageFlags": "-lboost_context -g",
+                "linkLanguageFlags": "-g",
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
                 "name": "cxx_demo",
-                "sourceDirectory": "/work/c-lib/cxx_demo",
-                "type": "EXECUTABLE"
-              },
-              {
-                "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_sort"
-                ],
-                "buildDirectory": "/work/c-lib/cxx_demo/build",
-                "fileGroups": [
-                  {
-                    "compileFlags": " -lboost_context -g  ",
-                    "includePath": [
-                      {
-                        "path": "/work/c-lib/cxx_demo/src"
-                      }
-                    ],
-                    "isGenerated": false,
-                    "language": "CXX",
-                    "sources": [
-                      "src/sort/test_sort.cc"
-                    ]
-                  }
-                ],
-                "fullName": "cxx_sort",
-                "linkLanguageFlags": "-lboost_context -g",
-                "linkLibraries": "-rdynamic",
-                "linkerLanguage": "CXX",
-                "name": "cxx_sort",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
               },
@@ -80,7 +52,7 @@
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
                   {
-                    "compileFlags": " -lboost_context -g  ",
+                    "compileFlags": "-g  ",
                     "includePath": [
                       {
                         "path": "/work/c-lib/cxx_demo/src"
@@ -94,10 +66,38 @@
                   }
                 ],
                 "fullName": "cxx_context",
-                "linkLanguageFlags": "-lboost_context -g",
-                "linkLibraries": "-rdynamic",
+                "linkLanguageFlags": "-g",
+                "linkLibraries": "-rdynamic -lboost_context",
                 "linkerLanguage": "CXX",
                 "name": "cxx_context",
+                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "/work/c-lib/cxx_demo/build/bin/cxx_sort"
+                ],
+                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-g  ",
+                    "includePath": [
+                      {
+                        "path": "/work/c-lib/cxx_demo/src"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/sort/test_sort.cc"
+                    ]
+                  }
+                ],
+                "fullName": "cxx_sort",
+                "linkLanguageFlags": "-g",
+                "linkLibraries": "-rdynamic",
+                "linkerLanguage": "CXX",
+                "name": "cxx_sort",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
               }
@@ -106,7 +106,7 @@
         ]
       }
     ],
-    "cookie": "0.8237843006083818",
+    "cookie": "0.48476794682896873",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
