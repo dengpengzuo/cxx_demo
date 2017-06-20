@@ -19,7 +19,7 @@
             "targets": [
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
+                  "/work/c-lib/cxx_demo/build/bin/cxx_sort"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
@@ -33,15 +33,15 @@
                     "isGenerated": false,
                     "language": "CXX",
                     "sources": [
-                      "src/cxx11/main.cc"
+                      "src/sort/test_sort.cc"
                     ]
                   }
                 ],
-                "fullName": "cxx_demo",
+                "fullName": "cxx_sort",
                 "linkLanguageFlags": "-g",
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
-                "name": "cxx_demo",
+                "name": "cxx_sort",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
               },
@@ -75,7 +75,7 @@
               },
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_sort"
+                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
@@ -89,15 +89,15 @@
                     "isGenerated": false,
                     "language": "CXX",
                     "sources": [
-                      "src/sort/test_sort.cc"
+                      "src/cxx11/main.cc"
                     ]
                   }
                 ],
-                "fullName": "cxx_sort",
+                "fullName": "cxx_demo",
                 "linkLanguageFlags": "-g",
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
-                "name": "cxx_sort",
+                "name": "cxx_demo",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
               }
@@ -106,7 +106,7 @@
         ]
       }
     ],
-    "cookie": "0.48476794682896873",
+    "cookie": "0.4047285477638418",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
