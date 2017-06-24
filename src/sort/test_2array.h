@@ -74,7 +74,7 @@ print_2array_impl()
 }
 
 //------------------------------------------------------------------------------
-// 二发查找
+// 二发查找[同时tkm向前，向后找了的]
 static void
 find_array_result(int* array, int len, int v, int except)
 {
@@ -89,11 +89,12 @@ find_array_result(int* array, int len, int v, int except)
         } else if (array[mid] < v) {
             low = mid + 1;
         } else {
-            std::cout << "find val:" << v << " at:" << mid;
-            if (mid != except) {
-                std::cout << " but except at:" << except;
-            }
-            std::cout << std::endl;
+            int i = -1, j = -1;
+            for (i = mid - 1; i >= 0 && array[i] == v; --i)
+                ;
+            for (j = mid + 1; j < len && array[j] == v; ++j)
+                ;
+            std::cout << "find val:" << v << " at:[" << (i + 1) << "," << (j - 1) << "]" << std::endl;
             break;
         }
     }
@@ -126,6 +127,7 @@ insert_sort_array(int* a, int len)
         a[j + 1] = ai;
     }
 }
+
 
 static double
 random(double start, double end)
