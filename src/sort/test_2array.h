@@ -81,7 +81,6 @@ find_array_result(int* array, int len, int v, int except)
     int low = 0;
     int high = len - 1;
     int mid = 0;
-    std::ostringstream buf;
     while (low <= high) {
         mid = (high + low) >> 1;
         if (array[mid] > v) {
@@ -94,7 +93,10 @@ find_array_result(int* array, int len, int v, int except)
                 ;
             for (j = mid + 1; j < len && array[j] == v; ++j)
                 ;
-            std::cout << "find val:" << v << " at:[" << (i + 1) << "," << (j - 1) << "]" << std::endl;
+            if(++i == --j)
+                std::cout << "find val:" << v << " at:[" << mid << "]" << std::endl;
+            else
+                std::cout << "find val:" << v << " at:[" << i << "," << j << "]" << std::endl;
             break;
         }
     }
@@ -120,7 +122,7 @@ insert_sort_array(int* a, int len)
         while (ai < a[j]) {
             a[j + 1] = a[j]; // a[j]后移到a[j+1]
             --j;
-            if (j < 0) { // **注意这儿不对必须是到-1.
+            if (j < 0) {     // **注意必须是到-1.
                 break;
             }
         }
