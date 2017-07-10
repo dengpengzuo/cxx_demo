@@ -8,13 +8,13 @@
 
 #include <boost/context/all.hpp>
 
-namespace ctx = boost::context ;
-namespace ctxd = boost::context::detail ;
+namespace ctx = boost::context;
+namespace ctxd = boost::context::detail;
 
 template <typename Alloc>
 class boost_uthread {
 public:
-    typedef std::function<void (boost_uthread<Alloc>*, void*)> uthread_functionx;
+    typedef std::function<void(boost_uthread<Alloc>*, void*)> uthread_functionx;
 
     ~boost_uthread()
     {

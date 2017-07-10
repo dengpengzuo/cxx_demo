@@ -19,34 +19,6 @@
             "targets": [
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
-                ],
-                "buildDirectory": "/work/c-lib/cxx_demo/build",
-                "fileGroups": [
-                  {
-                    "compileFlags": "-g  ",
-                    "includePath": [
-                      {
-                        "path": "/work/c-lib/cxx_demo/src"
-                      }
-                    ],
-                    "isGenerated": false,
-                    "language": "CXX",
-                    "sources": [
-                      "src/cxx11/main.cc"
-                    ]
-                  }
-                ],
-                "fullName": "cxx_demo",
-                "linkLanguageFlags": "-g",
-                "linkLibraries": "-rdynamic",
-                "linkerLanguage": "CXX",
-                "name": "cxx_demo",
-                "sourceDirectory": "/work/c-lib/cxx_demo",
-                "type": "EXECUTABLE"
-              },
-              {
-                "artifacts": [
                   "/work/c-lib/cxx_demo/build/bin/cxx_sort"
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
@@ -70,6 +42,34 @@
                 "linkLibraries": "-rdynamic",
                 "linkerLanguage": "CXX",
                 "name": "cxx_sort",
+                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
+                ],
+                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-g  ",
+                    "includePath": [
+                      {
+                        "path": "/work/c-lib/cxx_demo/src"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/cxx11/main.cc"
+                    ]
+                  }
+                ],
+                "fullName": "cxx_demo",
+                "linkLanguageFlags": "-g",
+                "linkLibraries": "-rdynamic",
+                "linkerLanguage": "CXX",
+                "name": "cxx_demo",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
                 "type": "EXECUTABLE"
               },
@@ -106,7 +106,7 @@
         ]
       }
     ],
-    "cookie": "0.059051490794783",
+    "cookie": "0.38571151936959747",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
