@@ -75,6 +75,7 @@ print_2array_impl()
 
 //------------------------------------------------------------------------------
 // 二发查找[同时tkm向前，向后找了的]
+// right = n-1 => while(left <= right) => right = middle-1;
 static void
 find_array_result(int* array, int len, int v, int except)
 {
@@ -82,7 +83,7 @@ find_array_result(int* array, int len, int v, int except)
     int high = len - 1;
     int mid = 0;
     while (low <= high) {
-        mid = (high + low) >> 1;
+        mid = low + ((high - low) >> 1);  //防止溢出，移位也更高效。同时，每次循环都需要更新。
         if (array[mid] > v) {
             high = mid - 1;
         } else if (array[mid] < v) {
