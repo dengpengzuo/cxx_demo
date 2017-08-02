@@ -4,6 +4,12 @@
 #include "cxx11/test_member_addr.h"
 #include "cxx11/test_size.h"
 #include "cxx11/test_coroutine.h"
+#include "jvm/jvm.h"
+
+
+class GenRemSet: public CHeapObj<mtGC> {
+
+};
 
 int main(int argc, char** argv)
 {
@@ -23,5 +29,12 @@ int main(int argc, char** argv)
     std::cout << std::string(50, '-') << std::endl;
 
     Test_Coroutine::test();
+
+    GenRemSet *p = new GenRemSet();
+    delete p;
+
+    GenRemSet *x = new GenRemSet[10];
+    delete[] x;
+
     return 0;
 }

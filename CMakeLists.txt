@@ -8,7 +8,7 @@ set(CMAKE_CXX_COMPILE_FEATURES "${CMAKE_CXX_COMPILE_FEATURES} -Wall -std=c++11")
 include_directories(src)
 
 # cxx特性测试
-add_executable(cxx_demo src/cxx11/main.cc)
+add_executable(cxx_demo src/cxx11/main.cc src/jvm/jvm.h)
 
 # 常用排序算法
 add_executable(cxx_sort src/sort/test_sort.cc)
