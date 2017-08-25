@@ -12,6 +12,7 @@ add_executable(cxx_demo src/cxx11/main.cc src/jvm/jvm.h)
 
 # 常用排序算法
 add_executable(cxx_sort src/sort/test_sort.cc)
+TARGET_LINK_LIBRARIES(cxx_sort profiler)
 
 # 加入测试boost_context协程上下文底程
 add_executable(cxx_context src/boost/context.cc)

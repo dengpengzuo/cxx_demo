@@ -148,9 +148,11 @@ namespace Test_2Array {
     }
 
     void array_main() {
+      for (int i = 0; i < 1000; ++i) {
         print_2array_impl();
         print_2array_wx();
         print_2find_array();
+      }
     }
 };
 #endif // TEST_2ARRAY_H
