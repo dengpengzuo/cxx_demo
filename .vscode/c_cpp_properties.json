@@ -11,7 +11,8 @@
             "browse": {
                 "path": [
                     "/usr/include",
-                    "/usr/local/include"
+                    "/usr/local/include",
+                    "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
@@ -29,7 +30,8 @@
             "browse": {
                 "path": [
                     "/usr/include",
-                    "/usr/local/include"
+                    "/usr/local/include",
+                    "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
@@ -52,12 +54,14 @@
                 "path": [
                     "d:/dev64/mingw64/include",
                     "d:/dev64/mingw64/lib/gcc/x86_64-w64-mingw32/6.3.0/include",
-                    "d:/dev64/mingw64/x86_64-w64-mingw32/include"
+                    "d:/dev64/mingw64/x86_64-w64-mingw32/include",
+                    "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
             },
             "intelliSenseMode": "msvc-x64"
         }
-    ]
+    ],
+    "version": 2
 }

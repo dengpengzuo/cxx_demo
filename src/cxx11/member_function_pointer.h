@@ -62,8 +62,8 @@ void test()
     fp v = std::bind(&BB::bindTest, &b);
     v();
 
-    typedef std::function<void(int)> fp2;
-    fp2 v2 = std::bind(&BB::bindTest2, &b, std::placeholders::_1, 20);
+    typedef std::function<void(int)> fp2; 
+    fp2 v2 = std::bind(&BB::bindTest2, &b, std::placeholders::_1, 20); // 参数1不变，参数2固定为20.
     v2(10); // b = 10 , c = 20 
     //------------------------------------------------------------------------
 }

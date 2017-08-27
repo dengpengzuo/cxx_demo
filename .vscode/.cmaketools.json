@@ -39,7 +39,7 @@
                 ],
                 "fullName": "cxx_sort",
                 "linkLanguageFlags": "-g",
-                "linkLibraries": "-rdynamic",
+                "linkLibraries": "-rdynamic -lprofiler",
                 "linkerLanguage": "CXX",
                 "name": "cxx_sort",
                 "sourceDirectory": "/work/c-lib/cxx_demo",
@@ -51,6 +51,12 @@
                 ],
                 "buildDirectory": "/work/c-lib/cxx_demo/build",
                 "fileGroups": [
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "src/jvm/jvm.h"
+                    ]
+                  },
                   {
                     "compileFlags": "-g  ",
                     "includePath": [
@@ -106,7 +112,7 @@
         ]
       }
     ],
-    "cookie": "0.38571151936959747",
+    "cookie": "0.3425091302800358",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
