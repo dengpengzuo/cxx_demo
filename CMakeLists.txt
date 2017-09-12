@@ -15,5 +15,5 @@ add_executable(cxx_sort src/sort/test_sort.cc)
 TARGET_LINK_LIBRARIES(cxx_sort profiler)
 
 # 加入测试boost_context协程上下文底程
-add_executable(cxx_context src/boost/context.cc)
+add_executable(cxx_context src/boost/context.cc src/boost/uthread.h src/boost/uthread.inl)
 TARGET_LINK_LIBRARIES(cxx_context boost_context)
