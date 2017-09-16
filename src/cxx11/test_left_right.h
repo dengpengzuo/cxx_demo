@@ -1,90 +1,65 @@
 #pragma once
 
+#include <cstring>
 #include <string>
 #include <vector>
-#include <cstring>
-
 
 namespace test_left_right {
 
-    class MyString {
-    private:
-        char *_data;
-        size_t _len;
+class MyString {
+private:
+  std::string _data;
 
-        void _init_data(const char *s) {
-            _data = new char[_len + 1];
-            std::memcpy(_data, s, _len);
-            _data[_len] = '\0';
-        }
+public:
+  MyString() : _data() {}
 
-    public:
-        MyString() {
-            _data = NULL;
-            _len = 0;
-        }
+  MyString(const char *p) : _data(p) {}
 
-        MyString(const char *p) {
-            _len = strlen(p);
-            _init_data(p);
-        }
+  MyString(const MyString &str) {
+    std::cout << "LEFT Copy Constructor is called! source: " << str._data
+              << std::endl;
+    _data = str._data;
+  }
 
-        MyString(const MyString &str) {
-            _len = str._len;
-            _init_data(str._data);
-            std::cout << "LEFT Copy Constructor is called! source: " << str._data << std::endl;
-        }
-
-
-        MyString &operator=(const MyString &str) {
-            if (this != &str) {
-                std::cout << "Copy Assignment is called! source: " << str._data << std::endl;
-
-                _len = str._len;
-                _init_data(str._data);
-            }
-            return *this;
-        }
-
-#define _HAVERIGHT_    2
-#if (_HAVERIGHT_ > 1)
-
-        MyString(MyString &&str) {
-            std::cout << "RIGHT Copy Constructor is called! source: " << str._data << std::endl;
-
-            _len = str._len;
-            _init_data(str._data); // std:;move()
-
-            str._len = 0;
-            str._data = nullptr;
-        }
-
-        MyString &operator=(MyString &&str) {
-
-            if (this != &str) {
-                std::cout << "RIGHT Copy Assignment is called! source: " << str._data << std::endl;
-
-                _len = str._len;
-                _init_data(str._data);  // std:;move()
-
-                str._len = 0;
-                str._data = nullptr;
-            }
-
-            return *this;
-        }
-
-#endif
-
-        virtual ~MyString() {
-            if (_data) free(_data);
-        }
-    };
-
-    void test() {
-        MyString a;
-        a = MyString("Hello");
-        std::vector<MyString> vec;
-        vec.push_back(MyString("World"));
+  MyString &operator=(const MyString &str) {
+    if (this != &str) {
+      std::cout << "Copy Assignment is called! source: " << str._data
+                << std::endl;
+      _data = str._data;
     }
+    return *this;
+  }
+
+  MyString(MyString &&str) {
+    std::cout << "RIGHT Copy Constructor is called! source: " << str._data
+              << std::endl;
+    _data = std::move(str._data);
+  }
+
+  MyString &operator=(MyString &&str) {
+    if (this != &str) {
+      std::cout << "RIGHT Copy Assignment is called! source: " << str._data
+                << std::endl;
+      _data = std::move(str._data);
+    }
+    return *this;
+  }
+
+  virtual ~MyString() { std::cout << "Free Data:" << _data << std::endl; }
+};
+
+MyString foo() {
+  MyString v("aaabbb");
+  return v;
+}
+
+void test() {
+  MyString a;
+  a = foo(); // foo 的返回值，产生成了一下right copy.
+
+  std::vector<MyString> vec;
+  vec.push_back(MyString(
+      "World")); // 产生了一个MyString，在进入vector中，又产生了一个right copy.
+  vec.clear();
+}
 };
