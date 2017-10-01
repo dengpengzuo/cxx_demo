@@ -3,6 +3,7 @@
 #include <cstring>
 #include <string>
 #include <vector>
+#include <utility>
 
 namespace test_left_right {
 
@@ -58,8 +59,14 @@ void test() {
   a = foo(); // foo 的返回值，产生成了一下right copy.
 
   std::vector<MyString> vec;
-  vec.push_back(MyString(
-      "World")); // 产生了一个MyString，在进入vector中，又产生了一个right copy.
+  vec.push_back(MyString("World")); // 产生了一个MyString，在进入vector中，又产生了一个right copy.
   vec.clear();
+
+  auto fib = [a = 0, b = 1]() mutable {
+    a = std::exchange(b, a + b);
+    return a;
+  };
+  for(int i = 0; i < 10; ++i)
+      std::cout << fib() << std::endl;
 }
 };

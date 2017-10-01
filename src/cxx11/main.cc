@@ -8,10 +8,6 @@
 #include "cxx11/test_left_right.h"
 
 
-class GenRemSet: public CHeapObj<mtGC> {
-
-};
-
 int main(int argc, char** argv)
 {
     Test_MFP::test();
@@ -30,13 +26,10 @@ int main(int argc, char** argv)
     std::cout << std::string(50, '-') << std::endl;
 
     Test_Coroutine::test();
-
-    GenRemSet *p = new GenRemSet();
-    delete p;
-
-    GenRemSet *x = new GenRemSet[10];
-    delete[] x;
+    std::cout << std::string(50, '-') << std::endl;
 
     test_left_right::test();
+    std::cout << std::string(50, '-') << std::endl;
+
     return 0;
 }
