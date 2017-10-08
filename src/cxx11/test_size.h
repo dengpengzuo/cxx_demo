@@ -46,6 +46,8 @@ struct PrintInfo {
 void printSize() {
   struct PrintInfo info[] = {{"sizeof(int)", sizeof(int)},
                              {"sizeof(long)", sizeof(long)},
+                             {"sizeof(char)", sizeof(char)},
+                             {"sizeof(wchar_t)", sizeof(wchar_t)},
                              {"sizeof(size_t)", sizeof(size_t)},
                              {"sizeof(intptr_t)", sizeof(intptr_t)},
                              {"sizeof(X)", sizeof(X)},
