@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <sstream>
-#include <time.h>
 
 namespace Test_2Array {
 #define PRINT_ARRAY(AR, LEN)                        \
@@ -19,7 +18,7 @@ namespace Test_2Array {
 // 微信面试找出次数
     static void
     print_2array_wx() {
-        int array_wx[] = {1, 2, 3, 3, 3, 4, 2};
+        int array_wx[] = {1, 2, 3, 3, 4, 3, 4};
         int len = sizeof(array_wx) / sizeof(array_wx[0]);
         int num = 0;
         int count = 0;
@@ -36,7 +35,7 @@ namespace Test_2Array {
             }
         }
         if (count > 0) {
-            count = (len - count) / 2 + count;
+            count = (len - count) / 2 + count - 1;
             PRINT_ARRAY(array_wx, len);
             fprintf(stdout, "发现出现次数过半数字：%d, 出现次数：%d\n", num, count);
         }
@@ -126,7 +125,7 @@ namespace Test_2Array {
 
     static double
     random(double start, double end) {
-        return start + (end - start) * ::rand() / (RAND_MAX + 1.0);
+        return start + (end - start) * std::rand() / (RAND_MAX + 1.0);
     }
 
     static void

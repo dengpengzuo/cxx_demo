@@ -13,21 +13,21 @@
         "name": "Debug",
         "projects": [
           {
-            "buildDirectory": "/work/c-lib/cxx_demo/build",
+            "buildDirectory": "/work/dev-lib/cxx-lib/cxx_demo/build",
             "name": "cxx_demo",
-            "sourceDirectory": "/work/c-lib/cxx_demo",
+            "sourceDirectory": "/work/dev-lib/cxx-lib/cxx_demo",
             "targets": [
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_sort"
+                  "/work/dev-lib/cxx-lib/cxx_demo/build/bin/cxx_sort"
                 ],
-                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "buildDirectory": "/work/dev-lib/cxx-lib/cxx_demo/build",
                 "fileGroups": [
                   {
                     "compileFlags": "-g  ",
                     "includePath": [
                       {
-                        "path": "/work/c-lib/cxx_demo/src"
+                        "path": "/work/dev-lib/cxx-lib/cxx_demo/src"
                       }
                     ],
                     "isGenerated": false,
@@ -42,54 +42,27 @@
                 "linkLibraries": "-rdynamic -lprofiler",
                 "linkerLanguage": "CXX",
                 "name": "cxx_sort",
-                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "sourceDirectory": "/work/dev-lib/cxx-lib/cxx_demo",
                 "type": "EXECUTABLE"
               },
               {
                 "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_demo"
+                  "/work/dev-lib/cxx-lib/cxx_demo/build/bin/cxx_context"
                 ],
-                "buildDirectory": "/work/c-lib/cxx_demo/build",
+                "buildDirectory": "/work/dev-lib/cxx-lib/cxx_demo/build",
                 "fileGroups": [
                   {
                     "isGenerated": false,
                     "sources": [
-                      "src/jvm/jvm.h"
+                      "src/boost/uthread.h",
+                      "src/boost/uthread.inl"
                     ]
                   },
                   {
                     "compileFlags": "-g  ",
                     "includePath": [
                       {
-                        "path": "/work/c-lib/cxx_demo/src"
-                      }
-                    ],
-                    "isGenerated": false,
-                    "language": "CXX",
-                    "sources": [
-                      "src/cxx11/main.cc"
-                    ]
-                  }
-                ],
-                "fullName": "cxx_demo",
-                "linkLanguageFlags": "-g",
-                "linkLibraries": "-rdynamic",
-                "linkerLanguage": "CXX",
-                "name": "cxx_demo",
-                "sourceDirectory": "/work/c-lib/cxx_demo",
-                "type": "EXECUTABLE"
-              },
-              {
-                "artifacts": [
-                  "/work/c-lib/cxx_demo/build/bin/cxx_context"
-                ],
-                "buildDirectory": "/work/c-lib/cxx_demo/build",
-                "fileGroups": [
-                  {
-                    "compileFlags": "-g  ",
-                    "includePath": [
-                      {
-                        "path": "/work/c-lib/cxx_demo/src"
+                        "path": "/work/dev-lib/cxx-lib/cxx_demo/src"
                       }
                     ],
                     "isGenerated": false,
@@ -104,7 +77,41 @@
                 "linkLibraries": "-rdynamic -lboost_context",
                 "linkerLanguage": "CXX",
                 "name": "cxx_context",
-                "sourceDirectory": "/work/c-lib/cxx_demo",
+                "sourceDirectory": "/work/dev-lib/cxx-lib/cxx_demo",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "/work/dev-lib/cxx-lib/cxx_demo/build/bin/cxx_demo"
+                ],
+                "buildDirectory": "/work/dev-lib/cxx-lib/cxx_demo/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "src/jvm/jvm.h"
+                    ]
+                  },
+                  {
+                    "compileFlags": "-g  ",
+                    "includePath": [
+                      {
+                        "path": "/work/dev-lib/cxx-lib/cxx_demo/src"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/cxx11/main.cc"
+                    ]
+                  }
+                ],
+                "fullName": "cxx_demo",
+                "linkLanguageFlags": "-g",
+                "linkLibraries": "-rdynamic",
+                "linkerLanguage": "CXX",
+                "name": "cxx_demo",
+                "sourceDirectory": "/work/dev-lib/cxx-lib/cxx_demo",
                 "type": "EXECUTABLE"
               }
             ]
@@ -112,7 +119,7 @@
         ]
       }
     ],
-    "cookie": "0.5440062757903086",
+    "cookie": "0.3374545697852136",
     "inReplyTo": "codemodel",
     "type": "reply"
   }

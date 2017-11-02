@@ -3,11 +3,12 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceRoot}",
                 "/usr/include",
-                "/usr/local/include"
+                "/usr/local/include",
+                "${workspaceRoot}"
             ],
             "defines": [],
+            "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
                     "/usr/include",
@@ -17,7 +18,6 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
             },
-            "intelliSenseMode": "clang-x64",
             "macFrameworkPath": [
                 "/System/Library/Frameworks",
                 "/Library/Frameworks"
@@ -26,45 +26,49 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceRoot}",
+                "/usr/include/x86_64-linux-gnu/c++/6",
+                "/usr/include/c++/6",
+                "/usr/local/include",
+                "/usr/lib/clang/3.8.1/include",
+                "/usr/include/x86_64-linux-gnu",
                 "/usr/include",
-                "/usr/local/include"
+                "${workspaceRoot}"
             ],
             "defines": [],
+            "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
-                    "/usr/include",
+                    "/usr/include/x86_64-linux-gnu/c++/6",
+                    "/usr/include/c++/6",
                     "/usr/local/include",
+                    "/usr/lib/clang/3.8.1/include",
+                    "/usr/include/x86_64-linux-gnu",
+                    "/usr/include",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            },
-            "intelliSenseMode": "clang-x64"
+            }
         },
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceRoot}",
-                "d:/dev64/mingw64/include",
-                "d:/dev64/mingw64/lib/gcc/x86_64-w64-mingw32/6.3.0/include",
-                "d:/dev64/mingw64/x86_64-w64-mingw32/include"
+                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
+                "${workspaceRoot}"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE"
             ],
+            "intelliSenseMode": "msvc-x64",
             "browse": {
                 "path": [
-                    "d:/dev64/mingw64/include",
-                    "d:/dev64/mingw64/lib/gcc/x86_64-w64-mingw32/6.3.0/include",
-                    "d:/dev64/mingw64/x86_64-w64-mingw32/include",
+                    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            },
-            "intelliSenseMode": "msvc-x64"
+            }
         }
     ],
     "version": 3
