@@ -14,6 +14,75 @@ namespace Test_2Array {
         }                                           \
         std::cout << buf.str() << std::endl;        \
     } while(0)
+
+    // 僵数向后，奇数向前
+    static void move2End(int array[], int len) {
+        int tj = len - 1;
+        int temp = 0;
+        for (int i = 0; i < len; ++i) {
+            if (array[i] % 2 == 0) {
+                temp = array[i];
+                for (int j = tj; j > i;) {
+                    if (array[j] % 2 == 0) {
+                        --j;
+                    } else {
+                        array[i] = array[j];
+                        array[j] = temp;
+                        tj = --j;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    template<typename T>
+    class Node {
+    public:
+        Node(T v, Node<T> *n) : _v(v), _next(n) {
+        }
+
+    public:
+        T _v;
+        Node<T> *_next;
+
+    };
+
+    static void doPrint(Node<int> *l, int k) {
+        // 先找到第k个
+        Node<int> *n = l->_next;
+        for (int j = 1; j < k; ++j) {
+            n = n->_next;
+        }
+
+        while (n != nullptr) {
+            l = l->_next;
+            n = n->_next;
+        }
+        std::cout << "last k:" << k << " at " << l->_v << std::endl;
+    }
+
+    static void xx_find() {
+        Node<int> *first = nullptr;
+
+        for (int i = 100; i >= 1; --i) {
+            if (first == nullptr)
+                first = new Node<int>(i, nullptr);
+            else {
+                Node<int> *newNode = new Node<int>(i, first);
+                first = newNode;
+            }
+        }
+
+        doPrint(first, 10);
+
+        for (Node<int> *i = first; i != nullptr;) {
+            first = first->_next;
+            delete i;
+            i = first;
+        }
+    }
+
 //------------------------------------------------------------------------------
 // 微信面试找出次数
     static void
@@ -147,11 +216,13 @@ namespace Test_2Array {
     }
 
     void array_main() {
-      for (int i = 0; i < 1000; ++i) {
-        print_2array_impl();
-        print_2array_wx();
-        print_2find_array();
-      }
+        xx_find();
+
+        for (int i = 0; i < 1000; ++i) {
+            print_2array_impl();
+            print_2array_wx();
+            print_2find_array();
+        }
     }
 };
 #endif // TEST_2ARRAY_H
