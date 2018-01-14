@@ -11,16 +11,23 @@ set(CMAKE_CXX_COMPILE_FEATURES "${CMAKE_CXX_COMPILE_FEATURES} -Wall")
 
 include_directories(src)
 
-# 常用排序算法
+# 面试中的一些算法
 add_executable(cxx_sort src/sort/test_sort.cc)
-TARGET_LINK_LIBRARIES(cxx_sort profiler)
 
 # 加入测试boost_context协程上下文底程
 add_executable(cxx_context src/boost/context.cc src/boost/uthread.h src/boost/uthread.inl)
-TARGET_LINK_LIBRARIES(cxx_context boost_context)
+target_link_libraries(cxx_context boost_context)
 
-# cxx特性测试
+# cxx特性学习
 add_subdirectory(deps/googletest)
-#add_subdirectory(deps/cctz)
-#add_subdirectory(deps/abseil-cpp)
-add_executable(cxx_demo src/cxx11/main.cc)
+add_subdirectory(deps/cctz)
+add_subdirectory(deps/abseil-cpp)
+add_executable(cxx_demo src/cxx11/main.cc )
+target_link_libraries(cxx_demo absl::base absl::synchronization absl::strings)
+
+# gtest 例子.
+if (BUILD_TESTING)
+    add_executable(cxx_demo_test src/cxx11/size_test.cpp)
+    target_link_libraries(cxx_demo_test gtest_main)
+    add_test(cxx_demo_test cxx_demo_test)
+endif ()

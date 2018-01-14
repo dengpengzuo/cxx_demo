@@ -6,6 +6,8 @@
 #include "cxx11/test_coroutine.h"
 #include "cxx11/test_left_right.h"
 
+#include "absl/base/config.h"
+#include "absl/base/call_once.h"
 
 int main(int argc, char** argv)
 {
