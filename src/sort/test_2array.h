@@ -14,7 +14,7 @@ namespace Test_2Array {
         }                                           \
         std::cout << buf.str() << std::endl;        \
     } while(0)
-
+//-------------------------------------------------------------------------------
     // 僵数向后，奇数向前
     static void move2End(int array[], int len) {
         int tj = len - 1;
@@ -35,7 +35,7 @@ namespace Test_2Array {
             }
         }
     }
-
+//-------------------------------------------------------------------------------
     template<typename T>
     class Node {
     public:
@@ -62,6 +62,7 @@ namespace Test_2Array {
         std::cout << "last k:" << k << " at " << l->_v << std::endl;
     }
 
+    // 链表的到数第K个
     static void xx_find() {
         Node<int> *first = nullptr;
 
@@ -205,6 +206,7 @@ namespace Test_2Array {
         for (int i = 0; i < len; ++i) {
             array_int[i] = int(random(0, 10000));
         }
+        move2End(array_int, len);
 
         PRINT_ARRAY(array_int, len);
         insert_sort_array(&array_int[0], len); // 小数组使用插入排序.
@@ -216,9 +218,7 @@ namespace Test_2Array {
     }
 
     void array_main() {
-        xx_find();
-
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; i < 10; ++i) {
             print_2array_impl();
             print_2array_wx();
             print_2find_array();

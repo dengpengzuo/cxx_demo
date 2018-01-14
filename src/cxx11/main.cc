@@ -4,7 +4,6 @@
 #include "cxx11/test_member_addr.h"
 #include "cxx11/test_size.h"
 #include "cxx11/test_coroutine.h"
-#include "jvm/jvm.h"
 #include "cxx11/test_left_right.h"
 
 
