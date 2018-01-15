@@ -1,4 +1,4 @@
-#include "sort/test_2array.h"
+#include "test_2array.h"
 
 int main(int arg, char* argv[])
 {

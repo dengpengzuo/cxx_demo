@@ -5,29 +5,14 @@ project(cxx_demo)
 set(CMAKE_CXX_STANDARD 14)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-## clang 编译参数
-## set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++ ${CMAKE_CXX_FLAGS}")
-set(CMAKE_CXX_COMPILE_FEATURES "${CMAKE_CXX_COMPILE_FEATURES} -Wall")
-
-include_directories(src)
-
-# 面试中的一些算法
-add_executable(cxx_sort src/sort/test_sort.cc)
-
-# 加入测试boost_context协程上下文底程
-add_executable(cxx_context src/boost/context.cc src/boost/uthread.h src/boost/uthread.inl)
-target_link_libraries(cxx_context boost_context)
+## gcc 编译参数
+set(CMAKE_CXX_COMPILE_FEATURES "-Wall ${CMAKE_CXX_COMPILE_FEATURES} ")
+## clang 链接参数
+## set(CMAKE_CXX_FLAGS "-std=c++14 -stdlib=libc++ ${CMAKE_CXX_FLAGS}")
 
 # cxx特性学习
 add_subdirectory(deps/googletest)
 add_subdirectory(deps/cctz)
 add_subdirectory(deps/abseil-cpp)
-add_executable(cxx_demo src/cxx11/main.cc )
-target_link_libraries(cxx_demo absl::base absl::synchronization absl::strings)
-
-# gtest 例子.
-if (BUILD_TESTING)
-    add_executable(cxx_demo_test src/cxx11/size_test.cpp)
-    target_link_libraries(cxx_demo_test gtest_main)
-    add_test(cxx_demo_test cxx_demo_test)
-endif ()
+# cxx_demo project
+add_subdirectory(src)
