@@ -8,7 +8,7 @@ add_executable(cxx_context boost/context.cc boost/uthread.h boost/uthread.inl)
 target_link_libraries(cxx_context boost_context)
 
 add_executable(cxx_demo cxx11/main.cc )
-target_link_libraries(cxx_demo absl::base absl::synchronization absl::strings)
+target_link_libraries(cxx_demo absl::base absl::strings)
 
 # gtest 例子.
 if (BUILD_TESTING)
