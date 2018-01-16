@@ -1,25 +1,5 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "win (gdb)",
-            "type": "cppdbg",
-            "request": "launch",
-            "miDebuggerPath": "d:/dev64/mingw64/bin/gdb.exe",
-            "program": "${workspaceRoot}/build/bin/cxx_demo.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceRoot}",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
-        }
     ]
 }
