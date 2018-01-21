@@ -1,6 +1,6 @@
-##c++的一些新特性学习
+## c++的一些新特性学习
 
-##编译依赖
+## 编译依赖
 A>.安装boost
 ```sh
 apt install libboost-dev
@@ -12,11 +12,11 @@ git submodule init
 igt submodule update
 ```
 
-##源码依赖
+## 源码依赖
 1.gtest
 
-	https://github.com/google/googletest
-	
+    https://github.com/google/googletest
+    
 2.cctz
 
     https://github.com/google/cctz
