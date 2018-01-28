@@ -40,8 +40,21 @@ public:
 typedef void (*Func)(void); // 指向函数的指针
 typedef void (BB::*CFunc)(void); //指向类成员函数的指针
 
+    static void test_xxx() {
+        int (*ptr)[2];
+        int array[2][2] = {1, 2, 3, 4};
+        ptr = array;
+        // array => 0x7ffeda1cc440{1, 2},
+        //          0x7ffeda1cc448{3. 4}.
+        // ptr   => 0x7ffeda1cc440
+        // ptr+1 => 0x7ffeda1cc448
+        // *ptr   => {1, 2}
+        //  **ptr  => 1
+    }
+
 void test()
 {
+    test_xxx();
     BB b;
     //-----------------------------------------------------------------------
     // 成员函数指针 ==>　virtual 成员函数
@@ -62,9 +75,9 @@ void test()
     fp v = std::bind(&BB::bindTest, &b);
     v();
 
-    typedef std::function<void(int)> fp2; 
+    typedef std::function<void(int)> fp2;
     fp2 v2 = std::bind(&BB::bindTest2, &b, std::placeholders::_1, 20); // 参数1不变，参数2固定为20.
-    v2(10); // b = 10 , c = 20 
+    v2(10); // b = 10 , c = 20
     //------------------------------------------------------------------------
 }
 };

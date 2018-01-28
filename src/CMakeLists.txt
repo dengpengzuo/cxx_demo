@@ -10,7 +10,7 @@ target_link_libraries(cxx_context boost_context)
 add_executable(cxx_demo cxx11/main.cc )
 target_link_libraries(cxx_demo absl::base absl::strings)
 
-add_executable(jvm_demo jvm/jvm_simple.cpp )
+add_executable(jvm_demo jvm/jvm_simple.cpp jvm/oop.hpp )
 target_link_libraries(jvm_demo)
 
 # gtest 例子.
