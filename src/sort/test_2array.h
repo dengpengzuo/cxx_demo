@@ -4,13 +4,14 @@
 
 #include <iostream>
 #include <sstream>
+#include <random>
 
 namespace Test_2Array {
 #define PRINT_ARRAY(AR, LEN)                        \
     do {                                            \
         std::ostringstream buf;                     \
         for (int __i = 0; __i < LEN; ++__i) {       \
-            buf << "\n[" << __i << "]=" << AR[__i]; \
+            buf << "[" << AR[__i] << "]," ; \
         }                                           \
         std::cout << buf.str() << std::endl;        \
     } while(0)
@@ -193,23 +194,25 @@ namespace Test_2Array {
         }
     }
 
-    static double
-    random(double start, double end) {
-        return start + (end - start) * std::rand() / (RAND_MAX + 1.0);
+    static void random(int *array, int len, double start, double end) {
+        std::random_device rd;
+        std::mt19937 mt(rd());
+
+        for (int i = 0; i < len; ++i) {
+            array[i] = int(start + (end - start) * mt() / (RAND_MAX + 1.0));
+        }
     }
 
     static void
     print_2find_array() {
         int array_int[128];
         int len = sizeof(array_int) / sizeof(array_int[0]);
-        ::srand(::time(0));
-        for (int i = 0; i < len; ++i) {
-            array_int[i] = int(random(0, 10000));
-        }
+
+        random(array_int, len, 0, 10000);
         move2End(array_int, len);
 
         PRINT_ARRAY(array_int, len);
-        insert_sort_array(&array_int[0], len); // 小数组使用插入排序.
+        insert_sort_array(array_int, len);
         PRINT_ARRAY(array_int, len);
 
         for (int i = 0; i < len; ++i) {
